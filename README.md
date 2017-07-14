@@ -10,7 +10,7 @@ Prepare the environment:
     patch -p1 < ../solidrun.patch
     mkdir -p 3rdparty/blobs/mainboard/solidrun/braswell_som
     cp -rf ../solidrun_braswell_blobs/* 3rdparty/blobs/mainboard/solidrun/braswell_som
-    cp config .config
+    cp ../config .config
 
 Build the cross toolchain:
 
