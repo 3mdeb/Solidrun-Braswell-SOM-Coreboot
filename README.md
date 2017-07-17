@@ -1,7 +1,7 @@
 Solidrun Braswell SOM Coreboot
 ==============================
 
-How to build:
+## How to build
 
 Prepare the environment:
 
@@ -11,16 +11,17 @@ Prepare the environment:
     mkdir -p 3rdparty/blobs/mainboard/solidrun/braswell_som
     cp -rf ../solidrun_braswell_blobs/* 3rdparty/blobs/mainboard/solidrun/braswell_som
     cp ../config .config
+    docker build -t 3mdeb/solidpc .
+    ./solidpc-build.sh
 
-Build the cross toolchain:
+## Flashing with SF100
 
-    make crosstools-x64
-
-Configure payload and build:
-
-    make menuconfig
-    <choose payload>
-    make -j8
+```
+git clone https://github.com/DediProgSW/SF100Linux.git
+make
+sudo cp 60-dediprog.rules /etc/udev/rules.d/
+sudo udevadm control --reload-rules && sudo udevadm trigger
+```
 
 Flash the resulting `build/coreboot.rom`.
 
